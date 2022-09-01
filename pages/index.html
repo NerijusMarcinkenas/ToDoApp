@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+</head>
+
+<body>
+
+    <div class="topnav" id="top-nav">
+        <div id="home-btn" class="active">Home</div>
+        <div id="register-btn">Register</div>
+        <div id="login-btn">Log In</div>
+    </div>
+
+    <h1>TO DOO APP</h1>
+
+    <div class="form-box" id="register-box">
+        <fieldset>
+            <legend>Register</legend>
+            <form action="#" id="register-form">
+                <div class="inp-box"> <label>Name:</label>
+                    <input type="text" id="name-inp-reg">
+                </div>
+                <div class="inp-box"><label for="pass">Password:</label>
+                    <input type="password" name="pass" id="pass-inp-reg">
+                </div>
+                <div class="inp-box"> <label for="mail">Email:</label>
+                    <input type="email" name="email" id="email-inp-reg">
+                </div>
+                <div class="message"></div>
+                <input type="submit" hidden />
+            </form>
+        </fieldset>
+    </div>
+
+    <div class="form-box" id="login-box">
+        <fieldset>
+            <legend>Log In</legend>
+            <form action="#" id="login-form">
+                <div class="inp-box"> <label for="name">Name:</label>
+                    <input type="text" name="name" id="name-inp-log">
+                </div>
+                <div class="inp-box"><label for="pass">Password:</label>
+                    <input type="password" name="pass" id="pass-inp-log">
+                </div>
+                <input type="submit" hidden />
+            </form>
+        </fieldset>
+    </div>
+
+
+
+
+
+    <script src="/scripts/main.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+
+</html>
