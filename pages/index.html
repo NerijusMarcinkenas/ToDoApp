@@ -14,9 +14,17 @@
 <body>
 
     <div class="topnav" id="top-nav">
-        <div id="home-btn" class="active">Home</div>
-        <div id="register-btn">Register</div>
-        <div id="login-btn">Log In</div>
+        <div class="left">
+            <div class="logo"><img class="todo-logo"
+                    src="https://i.pinimg.com/736x/e4/e7/50/e4e750a637dcefef70a58c1a03d31a1f--icons.jpg"
+                    alt="To do logo">
+            </div>
+        </div>
+        <div class="center nav">
+            <div id="home-btn" class="active">Home</div>
+            <div id="register-btn">Register</div>
+            <div id="login-btn">Log In</div>
+        </div>
     </div>
 
     <h1>TO DOO APP</h1>
@@ -25,7 +33,7 @@
         <fieldset>
             <legend>Register</legend>
             <form action="#" id="register-form">
-                <div class="inp-box"> <label>Name:</label>
+                <div class="inp-box"> <label>Username:</label>
                     <input type="text" id="name-inp-reg">
                 </div>
                 <div class="inp-box"><label for="pass">Password:</label>
@@ -33,8 +41,9 @@
                 </div>
                 <div class="inp-box"> <label for="mail">Email:</label>
                     <input type="email" name="email" id="email-inp-reg">
+
                 </div>
-                <div class="message"></div>
+                <button class="submit" type="submit">Submit</button>
                 <input type="submit" hidden />
             </form>
         </fieldset>
@@ -44,19 +53,19 @@
         <fieldset>
             <legend>Log In</legend>
             <form action="#" id="login-form">
-                <div class="inp-box"> <label for="name">Name:</label>
+                <div class="inp-box">
+                    <label for="name">Username:</label>
                     <input type="text" name="name" id="name-inp-log">
                 </div>
-                <div class="inp-box"><label for="pass">Password:</label>
+                <div class="inp-box">
+                    <label for="pass">Password:</label>
                     <input type="password" name="pass" id="pass-inp-log">
                 </div>
+                <button class="submit" type="submit">Submit</button>
                 <input type="submit" hidden />
             </form>
         </fieldset>
     </div>
-
-
-
 
 
     <script src="/scripts/main.js"></script>

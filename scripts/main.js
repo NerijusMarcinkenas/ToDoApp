@@ -2,13 +2,11 @@ const registerBtn = document.querySelector('#register-btn');
 const loginBtn = document.querySelector('#login-btn');
 const homeBtn = document.querySelector('#home-btn');
 const registerForm = document.querySelector('#register-form');
-const loginForm = document.querySelector('#login-fomr');
+const loginForm = document.querySelector('#login-form');
 const registerBox = document.querySelector('#register-box');
 const loginBox = document.querySelector('#login-box');
-let container = document.querySelector('.container');
-
-let personId = "";
-
+const userKey = 'user';
+let user = {};
 
 window.onload = () => {
     setButtons();
@@ -24,6 +22,7 @@ const setButtons = () => {
     loginBtn.addEventListener('click', () => {
         registerBox.style.display = 'none';
         loginBox.style.display = 'block';
+        logIn();
     });
 
     homeBtn.addEventListener('click', () => {
@@ -36,7 +35,6 @@ const setButtons = () => {
 const registration = () => {
     registerForm.addEventListener('submit', (event) => {
         event.preventDefault();
-        let messageTag = registerForm.querySelector('.message');
         const name = registerForm.querySelector('#name-inp-reg').value;
         const password = registerForm.querySelector('#pass-inp-reg').value;
         const email = registerForm.querySelector('#email-inp-reg').value;
@@ -52,15 +50,14 @@ const registration = () => {
                 "email": email
             })
         })
-            .then(res => {
-                if (!res.ok) {
-                    toastr.warning('Error');
-
-                } else {
-                    toastr.success(`User created!`);
-
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) {
+                    toastr.error(`${data.error}`);
+                    return;
                 }
-
+                toastr.success(`User created!`);
+                registerForm.reset();
             })
             .catch(err => {
                 console.log(err);
@@ -68,6 +65,35 @@ const registration = () => {
     })
 }
 
-const resetForm = (form) => {
 
+const logIn = () => {
+    loginForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let name = loginForm.querySelector('#name-inp-log').value;
+        let pass = loginForm.querySelector('#pass-inp-log').value;
+
+        fetch(`https://localhost:7171/api/Auth?username=${name}&password=${pass}`)
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                sessionStorage.removeItem(userKey);
+                if (data.error) {
+                    toastr.error(data.error);
+                    return;
+                } else if (data.id) {
+                    user = data;
+                    console.log(user);
+                    loginForm.reset();
+                    let userString = JSON.stringify(user);
+                    sessionStorage.setItem(userKey, userString);
+                    window.location = 'todos.html';
+                }
+
+            })
+            .catch(err => {
+
+                console.log("Catched: " + err);
+            })
+    });
 }
