@@ -22,15 +22,17 @@
         </div>
         <div class="center nav">
             <div id="add-btn">Add</div>
+            <div class="logout">Log out</div>
         </div>
-        <div class="right">
-            <div class="user"></div>
+        <div class="right nav">
+            <i class="user"></i>
+
         </div>
     </div>
 
 
     <div class="form-box center" id="add-box">
-        <form action="#">
+        <form id="add-form" action="#">
             <div class="inp-box">
                 <label>Type</label>
                 <input type="text" id="type-inp">
@@ -41,7 +43,7 @@
             </div>
             <div class="inp-box">
                 <label>End date</label>
-                <input type="date" id="date">
+                <input type="datetime-local" id="date">
             </div>
             <button class="submit" type="submit">Submit</button>
         </form>
@@ -66,9 +68,7 @@
                 <i class="abreviation">Type:</i>
                 <input readonly class="type"></input>
                 <i class="abreviation">Content:</i>
-                <textarea readonly class="content">asd
-                    assd
-                    asd <br>
+                <textarea readonly class="content">
                 </textarea>
             </div>
 

@@ -1,6 +1,5 @@
 const registerBtn = document.querySelector('#register-btn');
 const loginBtn = document.querySelector('#login-btn');
-const homeBtn = document.querySelector('#home-btn');
 const registerForm = document.querySelector('#register-form');
 const loginForm = document.querySelector('#login-form');
 const registerBox = document.querySelector('#register-box');
@@ -24,13 +23,7 @@ const setButtons = () => {
         loginBox.style.display = 'block';
         logIn();
     });
-
-    homeBtn.addEventListener('click', () => {
-        registerBox.style.display = 'none';
-        loginBox.style.display = 'none';
-    });
 }
-
 
 const registration = () => {
     registerForm.addEventListener('submit', (event) => {
@@ -50,22 +43,25 @@ const registration = () => {
                 "email": email
             })
         })
-            .then(res => res.json())
+            .then(res => {
+                if (res.ok) {
+                    toastr.success(`User created!`);
+                    registerForm.reset();
+                    return;
+                }
+                return res.json();
+            })
             .then(data => {
                 if (data.error) {
                     toastr.error(`${data.error}`);
                     return;
                 }
-                toastr.success(`User created!`);
-                registerForm.reset();
             })
             .catch(err => {
                 console.log(err);
             })
     })
 }
-
-
 const logIn = () => {
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -77,22 +73,18 @@ const logIn = () => {
                 return res.json();
             })
             .then(data => {
-                sessionStorage.removeItem(userKey);
                 if (data.error) {
                     toastr.error(data.error);
                     return;
                 } else if (data.id) {
-                    user = data;
-                    console.log(user);
                     loginForm.reset();
+                    user = data;
                     let userString = JSON.stringify(user);
                     sessionStorage.setItem(userKey, userString);
                     window.location = 'todos.html';
                 }
-
             })
             .catch(err => {
-
                 console.log("Catched: " + err);
             })
     });

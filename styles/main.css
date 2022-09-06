@@ -84,7 +84,6 @@ h1 {
     padding: 10px;
 }
 
-
 button {
     width: 200px;
     height: 30px;
@@ -117,8 +116,6 @@ label {
     background: wheat;
 }
 
-
-
 #register-box input,
 #login-box input,
 #add-box input,
@@ -130,18 +127,11 @@ label {
     background: wheat;
 }
 
-
-#add-box textarea {
-
-    resize: none;
-    height: 60px;
-}
-
 .form-box {
     display: none;
 }
 
-.topnav .center div:hover {
+.topnav .nav div:hover {
     color: white;
     background-color: rgb(40, 40, 16);
 }
